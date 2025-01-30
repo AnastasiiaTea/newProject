@@ -75,6 +75,36 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
      5.00, 4.00};
     
     G4MaterialPropertiesTable *mptScint = new G4MaterialPropertiesTable();
+    //emission spectrum of QD, data taken from the paper's figure 5
+    const G4int nEntries = 112;
+G4double photonEnergy[nEntries] = { //energy in ev corresponding to wavelengths 
+    2.451*eV, 2.457*eV, 2.496*eV, 2.525*eV, 2.540*eV, 2.561*eV, 2.590*eV, 2.622*eV, 2.640*eV, 2.663*eV, 
+    2.690*eV, 2.699*eV, 2.712*eV, 2.722*eV, 2.732*eV, 2.743*eV, 2.749*eV, 2.764*eV, 2.770*eV, 2.762*eV,
+    2.760*eV, 2.754*eV, 2.752*eV, 2.749*eV, 2.749*eV, 2.748*eV, 2.745*eV, 2.744*eV, 2.743*eV, 2.742*eV,
+    2.740*eV, 2.739*eV, 2.737*eV, 2.736*eV, 2.727*eV, 2.728*eV, 2.722*eV, 2.718*eV, 2.712*eV, 2.713*eV,
+    2.713*eV, 2.717*eV, 2.715*eV, 2.715*eV, 2.711*eV, 2.709*eV, 2.709*eV, 2.706*eV, 2.706*eV, 2.704*eV,
+    2.701*eV, 2.700*eV, 2.698*eV, 2.694*eV, 2.695*eV, 2.693*eV, 2.691*eV, 2.688*eV, 2.681*eV, 2.667*eV,
+    2.660*eV, 2.656*eV, 2.653*eV, 2.651*eV, 2.648*eV, 2.647*eV, 2.643*eV, 2.641*eV, 2.639*eV, 2.636*eV,
+    2.634*eV, 2.632*eV, 2.631*eV, 2.628*eV, 2.627*eV, 2.625*eV, 2.623*eV, 2.622*eV, 2.620*eV, 2.618*eV,
+    2.616*eV, 2.615*eV, 2.613*eV, 2.611*eV, 2.610*eV, 2.608*eV, 2.607*eV, 2.605*eV, 2.603*eV, 2.601*eV,
+    2.600*eV, 2.598*eV, 2.597*eV, 2.595*eV, 2.594*eV, 2.592*eV, 2.590*eV, 2.589*eV, 2.587*eV, 2.585*eV,
+    2.584*eV, 2.582*eV, 2.580*eV, 2.579*eV, 2.577*eV, 2.576*eV, 2.574*eV, 2.573*eV, 2.571*eV, 2.570*eV
+};
+
+G4double emissionSpectrum[nEntries] = { //relative intensity, no number
+    0.0259, 0.0229, 0.0229, 0.0321, 0.0352, 0.0475, 0.0568, 0.0722, 0.0845, 0.0968,
+    0.1122, 0.1245, 0.1337, 0.1491, 0.1645, 0.1768, 0.1953, 0.2261, 0.2507, 0.2692,
+    0.2907, 0.3123, 0.3338, 0.3707, 0.3492, 0.3861, 0.4077, 0.4231, 0.4415, 0.4600,
+    0.4754, 0.4908, 0.5093, 0.5246, 0.5708, 0.5585, 0.5924, 0.6139, 0.6478, 0.6324,
+    0.6293, 0.7032, 0.6878, 0.6662, 0.7278, 0.7709, 0.7524, 0.8017, 0.7863, 0.8232,
+    0.8479, 0.8663, 0.8817, 0.9125, 0.9002, 0.9248, 0.9464, 0.9710, 0.9894, 0.9710,
+    0.9464, 0.9279, 0.9094, 0.8909, 0.8694, 0.8509, 0.8263, 0.7986, 0.7801, 0.7555,
+    0.7340, 0.7155, 0.6970, 0.6724, 0.6539, 0.6324, 0.6170, 0.5985, 0.5770, 0.5554,
+    0.5339, 0.5154, 0.4939, 0.4692, 0.4508, 0.4323, 0.4138, 0.3984, 0.3800, 0.3584,
+    0.3307, 0.3061, 0.2846, 0.2599, 0.2353, 0.2107, 0.1891, 0.1707, 0.1491, 0.1276,
+    0.1091, 0.0937, 0.0845, 0.0691, 0.0568, 0.0445, 0.0383, 0.0260, 0.0260, 0.0198,
+    0.0198, 0.0229
+};
     //dependant on energy
     mptScint->AddProperty("RINDEX", energyScint, rindexScint, 32);
     mptScint->AddProperty("ABSLENGTH", energyScint, absorption, 32);
@@ -150,7 +180,18 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     auto bottle1S = new G4Tubs("bottle1S", 0, 0.040*m, 0.095*m, sphi, dphi);
     auto bottle2S = new G4Tubs("bottle2S", 0, 0.037*m, 0.087*m, sphi, dphi);
     auto bottleS = new G4SubtractionSolid ("bottleS", bottle1S, bottle2S);
-    bottleL = new G4LogicalVolume(bottleS, glass, "bottleL");
+    
+    // BOTTLENECK 
+    auto neckOuterCone = new G4Cons("neckOuterCone", 0.037*m, 0.040*m, 
+                                                      0.013*m, 0.015*m, 
+                                                      0.025*m, 0.0*deg, 360.0*deg);
+    auto neckInnerCone = new G4Cons("neckInnerCone", 0.035*m, 0.037*m, 0.011*m, 0.013*m, 0.025*m, 0.0*deg, 360.0*deg);
+    auto neckSolid = new G4SubtractionSolid ("neckSolid", neckOuterCone, neckInnerCone);
+    auto bottleWithNeck = new G4UnionSolid("bottleWithNeck", bottleS, neckSolid, nullptr, G4ThreeVector(0, 0, 0.1075*m));
+    
+    bottleL = new G4LogicalVolume(bottleWithNeck, glass, "bottleL");
+    //!!!
+    
     new G4PVPlacement(0,
                       G4ThreeVector(-0.30*m, 0.*m, -0.036*m),
                       bottleL,

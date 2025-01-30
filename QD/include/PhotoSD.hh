@@ -2,7 +2,7 @@
 
 #include "G4VSensitiveDetector.hh"
 #include "PhotoHit.hh"
-
+#include "G4RandomTools.hh"
 #include <vector>
 
 #include "G4HCofThisEvent.hh"
@@ -24,6 +24,7 @@ public:
     void   Initialize(G4HCofThisEvent* hitCollection) override;
     G4bool ProcessHits(G4Step* step, G4TouchableHistory* history) override;
     void   EndOfEvent(G4HCofThisEvent* hitCollection) override;
+    G4double GetQuantumEfficiency(G4double wavelength);
 
 private:
     PhotoHitsCollection* fHitsCollection = nullptr;

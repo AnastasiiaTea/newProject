@@ -51,7 +51,7 @@
                     hitCount++;
                 }
             }
-            h->Fill(hitCount); // assuming 20% efficiency, but can do this much more accurate by weighting hitcount in above loop using wavelength and a quantum efficiency curve
+            h->Fill(hitCount*0.2); // assuming 20% efficiency, but can do this much more accurate by weighting hitcount in above loop using wavelength and a quantum efficiency curve
         }
     }
 
