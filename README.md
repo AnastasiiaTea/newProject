@@ -10,7 +10,7 @@ The practice setup was cad-ded and built in the Kcl lab
 !!! Paste cad pic!!! 
 In the sim it looked like this:
 !!!paste geo pic!!!
-And pic of PMT with rays!!!!
+ ![pmt](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/PMT.jpg)), 
 The whole work will be once documented with Latex (at which I’m good:  ![tikz](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/TikzDiagram.jpg)), 
 just like my simpler projects, including the lab project on shape detection : measurement of surface energies by measuring contact angles: 
  ![droplets](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/Droplet.jpg)
