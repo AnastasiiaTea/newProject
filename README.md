@@ -7,7 +7,7 @@ data tables
 !!! Paste picture of smearing!!!
 Another part of this project was to test teflon for the Hyper-K (https://en.wikipedia.org/wiki/Hyper-Kamiokande) experiment.
 The practice setup was cad-ded and built in the Kcl lab 
-!!! Paste cad pic!!! 
+ ![cad](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/HyperK_CAD.jpg)), 
 In the sim it looked like this:
  ![geo](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/GearsHyperK.jpg)), 
  ![pmt](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/PMT.jpg)), 
