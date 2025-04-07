@@ -13,7 +13,7 @@ In the sim it looked like this:
 And pic of PMT with rays!!!!
 The whole work will be once documented with Latex (at which I’m good: !!picture of tikz!!!), 
 just like my simpler projects, including the lab project on shape detection : measurement of surface energies by measuring contact angles: 
- ![droplets](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/Droplets.jpg)
+ ![droplets](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/Droplet.jpg)
 Paste another pic!!!. T
 his work had a manim movie: ![manim](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/Manim.jpg)
 so will this big Geant project.
