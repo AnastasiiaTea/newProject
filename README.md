@@ -2,7 +2,7 @@ This GitHub repository was created to feature the outline of my role at the Gean
 The folder QD contains the original code for the sim that was used in the https://arxiv.org/abs/2403.10122 paper. 
 !!!! Paste its geometry pic !!!
 My role was adding quantum efficiency to the PMT,  emission spectrum to the quantum dots and refining the geometry. Hits in the PMT were 
-counted and analysed !!!paste pic of hits histogram!!!. As well, I have, with equal success, applied the gaussian smearing to the used 
+counted and analysed  ![hist](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/GeantHistogram.jpg)), . As well, I have, with equal success, applied the gaussian smearing to the used 
 data tables
  ![smearing](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/GaussianSmearing.jpg)), 
 Another part of this project was to test teflon for the Hyper-K (https://en.wikipedia.org/wiki/Hyper-Kamiokande) experiment.
