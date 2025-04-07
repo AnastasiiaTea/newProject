@@ -1,6 +1,6 @@
 This GitHub repository was created to feature the outline of my role at the Geant sim development to “show off” in front of recruiters. 
 The folder QD contains the original code for the sim that was used in the https://arxiv.org/abs/2403.10122 paper. 
-!!!! Paste its geometry pic !!!
+ ![geo](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/geo.jpg)),
 My role was adding quantum efficiency to the PMT,  emission spectrum to the quantum dots and refining the geometry. Hits in the PMT were 
 counted and analysed  ![hist](https://raw.githubusercontent.com/AnastasiiaTea/newProject/main/Git/GeantHistogram.jpg)), . As well, I have, with equal success, applied the gaussian smearing to the used 
 data tables
